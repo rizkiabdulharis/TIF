@@ -42,21 +42,14 @@ include("func.php");
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="../index.php">Home</a>
           </li>
-		  <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="offcanvasNavbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-               Data
-            </a>
-            <ul class="dropdown-menu" aria-labelledby="offcanvasNavbarDropdown">
-              		<li><a class="dropdown-item" href="Data.php">Data Mahasiswa</a></li>
-			        <li><a class="dropdown-item" href="Datadosen.php">Data Dosen</a></li>
-            </ul>
+          <li class="nav-item">
+            <a class="nav-link" href="datadosen.php">Data</a>
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="offcanvasNavbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                Input Data
             </a>
             <ul class="dropdown-menu" aria-labelledby="offcanvasNavbarDropdown">
-					<li><a class="dropdown-item" href="create.php">Input Data Mahasiswa</a></li>
 			        <li><a class="dropdown-item" href="createdosen.php">Input Data Dosen</a></li>
             </ul>
           </li>
@@ -67,32 +60,32 @@ include("func.php");
  </nav>
 	<div class="container">
 		<div class="content">
-			<h2>Add Data Mahasiswa</h2>
+			<h2>Add Data Dosen</h2>
 			<hr />
 			
 			<?php
 			if(isset($_POST['add'])){
-				$nim		= aman($_POST['nim']);
+				$nid		= aman($_POST['nid']);
 				$pass1		= aman($_POST['pass1']);
 				$pass2		= aman($_POST['pass2']);
 				$nama		= aman($_POST['nama']);
-				$tmp		= aman($_POST['tmp']);
-				$tgl		= aman($_POST['tgl']);
+				$tempat_lahir		= aman($_POST['tempat_lahir']);
+				$tanggal_lahir		= aman($_POST['tanggal_lahir']);
 				$email		= aman($_POST['email']);
-				$jk			= aman($_POST['jk']);
+				$jenis_kelamin		= aman($_POST['jenis_kelamin']);
 				$agama		= aman($_POST['agama']);
-				$jurusan	= aman($_POST['jurusan']);
-				$smt		= aman($_POST['semester']);
-				$thn_masuk	= aman($_POST['tahun_masuk']);
+				$mata_kuliah	= aman($_POST['mata_kuliah']);
+				$pendidikan_terakhir		= aman($_POST['pendidikan_terakhir']);
+				$tahun_masuk	= aman($_POST['tahun_masuk']);
 				$alamat		= aman($_POST['alamat']);
 				$status		= aman($_POST['status']);
 				
-				$cek = mysqli_query($koneksi, " SELECT * FROM mahasiswa_informatika WHERE nim='$nim'");
+				$cek = mysqli_query($koneksi, " SELECT * FROM dosen_informatika WHERE nid='$nid'");
 				if(mysqli_num_rows($cek) == 0 ){
 					if($pass1 == $pass2){
-						$pass = md5($pass1);
-						$insert = mysqli_query($koneksi, "INSERT INTO mahasiswa_informatika(nim, password, nama, tempat_lahir, tanggal_lahir, email, jenis_kelamin, agama, jurusan, semester, tahun_masuk, alamat, foto, status)
-															VALUES('$nim', '$pass', '$nama', '$tmp', '$tgl', '$email', '$jk', '$agama', '$jurusan', '$smt', '$thn_masuk', '$alamat', 'avatar.png', '$status')") or die(mysqli_error());
+						$password = md5($pass1);
+						$insert = mysqli_query($koneksi, "INSERT INTO dosen_informatika(nid, password, nama, tempat_lahir, tanggal_lahir, email, jenis_kelamin, agama, mata_kuliah, pendidikan_terakhir, tahun_masuk, alamat, foto, status)
+															VALUES('$nid', '$password', '$nama', '$tempat_lahir', '$tanggal_lahir', '$email', '$jenis_kelamin', '$agama', '$mata_kuliah', '$pendidikan_terakhir', '$tahun_masuk', '$alamat', 'avatar.png', '$status')") or die(mysqli_error());
 						if($insert){
 							echo '<div class="alert alert-success">Pendaftaran berhasil dilakukan.</div>';
 						}else{
@@ -109,9 +102,9 @@ include("func.php");
 			
 			<form class="form-horizontal" action="" method="post">
 				<div class="form-group">
-					<label class="col-sm-3 control-label">NIM</label>
+					<label class="col-sm-3 control-label">NID</label>
 					<div class="col-sm-2">
-						<input type="text" name="nim" class="form-control" placeholder="NIM" required>
+						<input type="text" name="nid" class="form-control" placeholder="NID" required>
 					</div>
 				</div>
 				<div class="form-group">
@@ -135,11 +128,11 @@ include("func.php");
 				<div class="form-group">
 					<label class="col-sm-3 control-label">TEMPAT & TANGGAL LAHIR</label>
 					<div class="col-sm-3">
-						<input type="text" name="tmp" class="form-control" placeholder="TEMPAT LAHIR" required>
+						<input type="text" name="tempat_lahir" class="form-control" placeholder="TEMPAT LAHIR" required>
 					</div>
 					<div class="col-sm-2">
 						<div class="input-group date" data-provide="datepicker">
-							<input type="text" name="tgl" class="form-control" placeholder="0000-00-00">
+							<input type="text" name="tanggal_lahir" class="form-control" placeholder="0000-00-00">
 							<div class="input-group-addon">
 								<span class="glyphicon glyphicon-calendar"></span>
 							</div>
@@ -155,7 +148,7 @@ include("func.php");
 				<div class="form-group">
 					<label class="col-sm-3 control-label">JENIS KELAMIN</label>
 					<div class="col-sm-2">
-						<select name="jk" class="form-control" required>
+						<select name="jenis_kelamin" class="form-control" required>
 							<option value="Laki-Laki">LAKI-LAKI</option>
 							<option value="Perempuan">PEREMPUAN</option>
 						</select>
@@ -175,20 +168,28 @@ include("func.php");
 					</div>
 				</div>
 				<div class="form-group">
-					<label class="col-sm-3 control-label">JURUSAN</label>
+					<label class="col-sm-3 control-label">MATA KULIAH</label>
 					<div class="col-sm-3">
-						<select name="jurusan" class="form-control">
-							<option value="Teknik Informatika">TEKNIK INFORMATIKA</option>
-							<option value="Teknik Sipil">TEKNIK SIPIL</option>
-							<option value="Ekonomi">TEKNIK INDUSTRI</option>
-							<option value="Perikanan">TEKNIK ELEKTRO</option>
+						<select name="mata_kuliah" class="form-control">
+							<option value="Teknik Informatika">JARINGAN KOMPUTER</option>
+							<option value="Teknik Sipil">PEMROGRAMAN WEB</option>
+							<option value="Ekonomi">SISTEM OPERASI</option>
+							<option value="Perikanan">GRAFIKA</option>
+                            <option value="Teknik Informatika">INTERAKSI MANUSIA KOMPUTER</option>
+							<option value="Teknik Sipil">DSS</option>
+							<option value="Ekonomi">KALKULUS</option>
+							<option value="Perikanan">FISIKA DASAR</option>
+                            <option value="Teknik Informatika">KEWARGANEGARAAN</option>
+							<option value="Teknik Sipil">BAHASA INGGRIS</option>
+							<option value="Ekonomi">BAHASA INDONESIA</option>
+							<option value="Perikanan">AL ISLAM</option>
 						</select>
 					</div>
 				</div>
 				<div class="form-group">
-					<label class="col-sm-3 control-label">SEMESTER</label>
+					<label class="col-sm-3 control-label">PENDIDIKAN TERAKHIR</label>
 					<div class="col-sm-2">
-						<input type="text" name="semester" class="form-control" placeholder="SEMESTER">
+						<input type="text" name="pendidikan_terakhir" class="form-control" placeholder="SEMESTER">
 					</div>
 				</div>
 				<div class="form-group">

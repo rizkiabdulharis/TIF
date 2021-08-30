@@ -46,7 +46,7 @@ include("koneksi.php");
                Data
             </a>
             <ul class="dropdown-menu" aria-labelledby="offcanvasNavbarDropdown">
-              <li><a class="dropdown-item" href="Data.php">Data Mahasiswa</a></li>
+              		<li><a class="dropdown-item" href="Data.php">Data Mahasiswa</a></li>
 			        <li><a class="dropdown-item" href="Datadosen.php">Data Dosen</a></li>
             </ul>
           </li>
@@ -55,8 +55,7 @@ include("koneksi.php");
                Input Data
             </a>
             <ul class="dropdown-menu" aria-labelledby="offcanvasNavbarDropdown">
-			  		<li><a class="dropdown-item" href="create.php">Input Data Mahasiswa</a></li>
-			        <li><a class="dropdown-item" href="#">Input Data Dosen</a></li>
+			        <li><a class="dropdown-item" href="createdosen.php">Input Data Dosen</a></li>
             </ul>
           </li>
         </ul>
@@ -71,8 +70,8 @@ include("koneksi.php");
 			
 			<?php
 			if(isset($_GET['aksi']) == 'delete'){
-				$nim = $_GET['nim'];
-					$delete = mysqli_query($koneksi, "DELETE FROM mahasiswa WHERE nim ='$nim'");
+				$nid = $_GET['nid'];
+					$delete = mysqli_query($koneksi, "DELETE FROM dosen_informatika WHERE nid ='$nid'");
 					if($delete){
 						echo '<div class="alert alert-danger">Data berhasil dihapus.</div>';
 					}else{
@@ -87,8 +86,8 @@ include("koneksi.php");
 					<select name="urut" class="form-control" onchange="form.submit()">
 						<option value="0">Filter</option>
 						<?php $urut = (isset($_GET['urut']) ? strtolower($_GET['urut']) : NULL);  ?>
-						<option value="1" <?php if($urut == '1'){ echo 'selected'; } ?>>Mahasiswa Aktif</option>
-						<option value="2" <?php if($urut == '2'){ echo 'selected'; } ?>>Mahasiswa Tidak Aktif</option>
+						<option value="1" <?php if($urut == '1'){ echo 'selected'; } ?>>dosen Aktif</option>
+						<option value="2" <?php if($urut == '2'){ echo 'selected'; } ?>>dosen Tidak Aktif</option>
 					</select>
 				</div>
 			</form>
@@ -97,19 +96,19 @@ include("koneksi.php");
 			<table class="table table-striped table-hover">
 				<tr>
 					<th>NO.</th>
-					<th>NIM</th>
+					<th>NID</th>
 					<th>NAMA LENGKAP</th>
 					<th>EMAIL</th>
 					<th>JENIS KELAMIN</th>
-					<th>JURUSAN</th>
+					<th>MATA KULIAH</th>
 					<th>STATUS</th>
 					<th>SETTING</th>
 				</tr>
 				<?php
 				if($urut){
-					$sql = mysqli_query($koneksi, "SELECT * FROM mahasiswa_informatika WHERE status='$urut' ORDER BY nim ASC");
+					$sql = mysqli_query($koneksi, "SELECT * FROM dosen_informatika WHERE status='$urut' ORDER BY nid ASC");
 				}else{
-					$sql = mysqli_query($koneksi, "SELECT * FROM mahasiswa_informatika ORDER BY nim ASC");
+					$sql = mysqli_query($koneksi, "SELECT * FROM dosen_informatika ORDER BY nid ASC");
 				}
 				if(mysqli_num_rows($sql) == 0){
 					echo '<tr><td colspan="8">Tidak ada data.</td></tr>';
@@ -119,11 +118,11 @@ include("koneksi.php");
 						echo '
 						<tr>
 							<td>'.$no.'</td>
-							<td>'.$row['nim'].'</td>
+							<td>'.$row['nid'].'</td>
 							<td>'.$row['nama'].'</td>
 							<td>'.$row['email'].'</td>
 							<td>'.$row['jenis_kelamin'].'</td>
-							<td>'.$row['jurusan'].'</td>
+							<td>'.$row['mata_kuliah'].'</td>
 							<td>';
 							if($row['status'] == 1){
 								echo '<span class="label label-success">Aktif</span>';
@@ -131,11 +130,11 @@ include("koneksi.php");
 								echo '<span class="label label-warning">Tidak Aktif</span>';
 							}
 						echo'<td>
-								<a href="read.php?nim='.$row['nim'].'" title="Lihat Detail"><img src="../node_modules/bootstrap-icons/icons/list-task.svg" alt=""></a>
+								<a href="read.php?nid='.$row['nid'].'" title="Lihat Detail"><img src="../node_modules/bootstrap-icons/icons/list-task.svg" alt=""></a>
 
-								<a href="edit.php?nim='.$row['nim'].'" title="Edit Data"><img src="../node_modules/bootstrap-icons/icons/pencil.svg" alt=""></a>
+								<a href="edit.php?nid='.$row['nid'].'" title="Edit Data"><img src="../node_modules/bootstrap-icons/icons/pencil.svg" alt=""></a>
 
-								<a href="index.php?aksi=delete&nim='.$row['nim'].'" title="Hapus Data" onclick="return confirm(\'Yakin?\')"><img src="../node_modules/bootstrap-icons/icons/trash.svg" alt=""></a>
+								<a href="index.php?aksi=delete&nid='.$row['nid'].'" title="Hapus Data" onclick="return confirm(\'Yakin?\')"><img src="../node_modules/bootstrap-icons/icons/trash.svg" alt=""></a>
 						</tr>
 						';
 						$no++;

@@ -8,6 +8,11 @@
 	<title>Teknik Informatika</title>
 </head>
 <body>
+  <style>
+    *{
+      font-family: sans-serif;
+    }
+  </style>
   
 	<!-- Nav -->
 <nav class="navbar navbar-light bg-light fixed-top">
@@ -52,7 +57,7 @@
 
     
     <!-- Slider -->
-<div class="slider" style="object-fit: cover;">
+<div id="slider" class="slider" style="object-fit: cover;">
     <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
     <div class="carousel-indicators">
         <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
@@ -94,10 +99,10 @@
   <div class="container">
     <header class="d-flex justify-content-center py-3 mt-4">
       <ul class="nav nav-pills">
-        <li class="nav-item"><a href="#" class="nav-link active" aria-current="page">Beranda</a></li>
-        <li class="nav-item"><a href="#" class="nav-link">Kontak</a></li>
-        <li class="nav-item"><a href="#" class="nav-link">Kegiatan</a></li>
-        <li class="nav-item"><a href="#" class="nav-link">Kepengurusan</a></li>
+        <li class="nav-item"><a href="#slider" class="nav-link active" aria-current="page">Beranda</a></li>
+        <li class="nav-item"><a href="#kegiatan" class="nav-link">Kegiatan</a></li>
+        <li class="nav-item"><a href="#kontak" class="nav-link">Kontak</a></li>
+        <li class="nav-item"><a href="#slider" class="nav-link">Kepengurusan</a></li>
       </ul>
     </header>
   </div>
@@ -108,30 +113,76 @@
     <div class="row">
     <div class="col">
       <h5 style="text-align: center;">Visi</h5>
-   <p>Menjadi Perguruan Tinggi Islam yang Mandiri dan Unggul Tahun 2035. Nulla quasi quis quia, blanditiis aliquam ullam quibusdam facere accusantium officiis distinctio qui aliquid, ad id aspernatur laudantium maxime doloremque perferendis molestiae? Lorem, ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit dignissimos minima natus itaque, facilis provident sed incidunt, consequuntur debitis facere laborum eveniet iure unde fugiat amet harum porro error. Repellat fugit tempore consequatur. Molestias asperiores nisi tempore fugiat dolores eos ducimus maiores hic? Tempora ullam neque libero, nulla minima dolores vero facere voluptatem? Ex nam commodi dicta reiciendis impedit, quasi facilis est voluptatum atque expedita. Veniam reprehenderit obcaecati, repellendus, autem eveniet et harum aliquam maiores ipsum deleniti dolorem recusandae. Assumenda modi quia animi ea, quo optio pariatur at velit quos saepe cupiditate nam beatae repellat architecto aliquam enim quam accusamus nobis esse facere. Velit saepe nulla quo eaque? Tempora et hic quod eveniet non itaque, omnis iusto beatae explicabo nam eaque. Illo earum fugit obcaecati vero quisquam aperiam nemo, labore sit optio, possimus distinctio suscipit pariatur! Facilis adipisci hic magni, cum similique eum quos, voluptates nobis distinctio, qui quasi. Ea labore quo a magni quasi impedit fugit quia cupiditate mollitia nihil itaque at iste, deserunt doloremque sed corporis eaque repellat alias fugiat tempora sint? Et quia ab necessitatibus. Harum inventore suscipit minima natus hic nostrum sint a cumque fugiat nulla voluptas, quod repellendus ipsa dolores itaque recusandae, tempore eos ducimus ullam delectus ab. </p> 
-    </div>
-    <div class="col">
-      <img src="img/HIMATIF.png" alt="">
-    </div>
-  </div>
-</div>
-<div class="container">
-  <div class="row">
-    <div class="col">
-      <img src="img/HIMATIF.png" alt="">
+   <p>Menjadi Perguruan Tinggi Islam yang Mandiri dan Unggul Tahun 2035. </p> 
     </div>
     <div class="col">
     <h5 style="text-align: center;">Misi</h5>
-   <p>   <p>Menjadi Perguruan Tinggi Islam yang Mandiri dan Unggul Tahun 2035. Nulla quasi quis quia, blanditiis aliquam ullam quibusdam facere accusantium officiis distinctio qui aliquid, ad id aspernatur laudantium maxime doloremque perferendis molestiae? Lorem, ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit dignissimos minima natus itaque, facilis provident sed incidunt, consequuntur debitis facere laborum eveniet iure unde fugiat amet harum porro error. Repellat fugit tempore consequatur. Molestias asperiores nisi tempore fugiat dolores eos ducimus maiores hic? Tempora ullam neque libero, nulla minima dolores vero facere voluptatem? Ex nam commodi dicta reiciendis impedit, quasi facilis est voluptatum atque expedita. Veniam reprehenderit obcaecati, repellendus, autem eveniet et harum aliquam maiores ipsum deleniti dolorem recusandae. Assumenda modi quia animi ea, quo optio pariatur at velit quos saepe cupiditate nam beatae repellat architecto aliquam enim quam accusamus nobis esse facere. Velit saepe nulla quo eaque? Tempora et hic quod eveniet non itaque, omnis iusto beatae explicabo nam eaque. Illo earum fugit obcaecati vero quisquam aperiam nemo, labore sit optio, possimus distinctio suscipit pariatur! Facilis adipisci hic magni, cum similique eum quos, voluptates nobis distinctio, qui quasi. Ea labore quo a magni quasi impedit fugit quia cupiditate mollitia nihil itaque at iste, deserunt doloremque sed corporis eaque repellat alias fugiat tempora sint? Et quia ab necessitatibus. Harum inventore suscipit minima natus hic nostrum sint a cumque fugiat nulla voluptas, quod repellendus ipsa dolores itaque recusandae, tempore eos ducimus ullam delectus ab. </p> 
- Nulla quasi quis quia, blanditiis aliquam ullam quibusdam facere accusantium officiis distinctio qui aliquid, ad id aspernatur laudantium maxime doloremque perferendis molestiae? Lorem, ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit dignissimos minima natus itaque, facilis provident sed incidunt, consequuntur debitis facere laborum eveniet iure unde fugiat amet harum porro error. Repellat fugit tempore consequatur. Molestias asperiores nisi tempore fugiat dolores eos ducimus maiores hic? Tempora ullam neque libero, nulla minima dolores vero facere voluptatem? Ex nam commodi dicta reiciendis impedit, quasi facilis est voluptatum atque expedita. Veniam reprehenderit obcaecati, repellendus, autem eveniet et harum aliquam maiores ipsum deleniti dolorem recusandae. Assumenda modi quia animi ea, quo optio pariatur at velit quos saepe cupiditate nam beatae repellat architecto aliquam enim quam accusamus nobis esse facere. Velit saepe nulla quo eaque? Tempora et hic quod eveniet non itaque, omnis iusto beatae explicabo nam eaque. Illo earum fugit obcaecati vero quisquam aperiam nemo, labore sit optio, possimus distinctio suscipit pariatur! Facilis adipisci hic magni, cum similique eum quos, voluptates nobis distinctio, qui quasi. Ea labore quo a magni quasi impedit fugit quia cupiditate mollitia nihil itaque at iste, deserunt doloremque sed corporis eaque repellat alias fugiat tempora sint? Et quia ab necessitatibus. Harum inventore suscipit minima natus hic nostrum sint a cumque fugiat nulla voluptas, quod repellendus ipsa dolores itaque recusandae, tempore eos ducimus ullam delectus ab. </p> 
+    <li><a>Menyelenggarakan pendidikan dan pengajaran untuk menghasilkan sumber daya manusia yang memiliki kompetensi akademik serta integritas pribadi sebagai cendekiawan muslim.</a></li>
+    <li><a> Menyelenggarakan penelitian dan pengkajian untuk mengembangkan ilmu pengetahuan, teknologi, seni, dan budaya bedasarkan nilai – nilai keislaman yang relevan dengan kebutuhan masyarakat.</a></li>
+    <li><a> Menyelenggarakan pengabdian pada masyarakat dengan memanfaatkan ilmu pengetahuan, teknologi, seni dan budaya dengan berdasarkan nilai – nilai islam.</a></li>
+    <li><a> Menyelenggarakan tata kelola perguruan tinggi yang menjamin peningkatan kualitas berkelanjutan berdasarkan prinsip – prinsip otonom, kredibel, akuntable dan transparan, serta .</a></li>
+    <li><a>Mengembangkan kerjasama dan kemitraan dengan berbagai pihak di dalam dan diluar negeri berdasarkan prinsip – prinsip kesetaraan.</a></li>
     </div>
   </div>
 </div>
+<br><br><br>
+
+    <!-- Kegiatan -->
+  <div id="kegiatan" class="container mt-5">
+  <h3 style="font: bold; text-align:center;">Kegiatan</h3>
+  <div class="row row-cols-3 g-5 mt-2 ">
+    <div class="col">
+    <div class="card" style="width: 18rem;">
+       <img src="img/mabim.jpeg" class="card-img-top">
+        <div class="card-body">
+       <h5 class="card-title">Mabim</h5>
+         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the   card's content.</p>
+       <a href="https://www.instagram.com/p/CMY5j0-lSuE/?utm_medium=copy_link" class="btn btn-primary">Go</a>
+        </div>
+       </div>
+    </div>
+    <div class="col">
+    <div class="card" style="width: 18rem;">
+       <img src="img/milad.jpeg" class="card-img-top">
+        <div class="card-body">
+       <h5 class="card-title">Milad</h5>
+         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the   card's content.</p>
+       <a href="https://www.instagram.com/p/COcq4X-lSya/?utm_medium=copy_link" class="btn btn-primary">Go</a>
+        </div>
+    </div>
+    </div>
+    <div class="col">
+    <div class="card" style="width: 18rem;">
+       <img src="img/TP.jpeg" class="card-img-top">
+        <div class="card-body">
+       <h5 class="card-title">Makrab</h5>
+         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the   card's content.</p>
+       <a href="https://www.instagram.com/p/CNEaDTNlqBp/?utm_medium=copy_link" class="btn btn-primary">Go</a>
+        </div>
+    </div>
+    </div>
+  </div>
+  </div>
+  <br><br><br>
+
+
+
+     <!-- Kontak  -->
+     <div id="kontak" style="text-align: center;">
+    <ul class="list-group">
+      <h3 style="font: bold;">Kontak</h3>
+  <li class="list-group-item"><img src="node_modules/bootstrap-icons/icons/pin-map-fill.svg"> Jl. Soekarno Hatta No.530, Sekejati, Kec. Buahbatu, Kota Bandung, Jawa Barat 40286</li>
+  <li class="list-group-item"><img src="node_modules/bootstrap-icons/icons/phone.svg">0811-2161-530</li>
+  <li class="list-group-item"><img src="node_modules/bootstrap-icons/icons/mailbox.svg" style="padding-right: 3px;">humasuninus@gmail.com</li>
+    </ul>
+  </div>
+  <br><br><br>
+  
+
 <!-- footers -->
  <div class="footer">
  <p class="text-center text-muted">&copy; 2021 Teknik Informatika</p>
  </div>
-     
  <script src="js/bootstrap.min.js"></script>
 </body>
 </html>

@@ -26,7 +26,7 @@ include("func.php");
 	<![endif]-->
 </head>
 <body>
-<nav class="navbar navbar-light bg-secondary fixed-top">
+<nav class="navbar navbar-light bg-light fixed-top">
   <div class="container-fluid">
     <a class="navbar-brand" href="#">Teknik Informatika</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">

@@ -10,7 +10,7 @@
 <body>
   
 	<!-- Nav -->
-<nav class="navbar navbar-light bg-secondary fixed-top">
+<nav class="navbar navbar-light bg-light fixed-top">
   <div class="container-fluid">
     <a class="navbar-brand" href="https://instagram.com/himatifuninus?utm_medium=copy_link" target="_blank">Teknik Informatika</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
@@ -26,8 +26,14 @@
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="index.php">Home</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="src/data.php">Data</a>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="offcanvasNavbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+               Data
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="offcanvasNavbarDropdown">
+              <li><a class="dropdown-item" href="src/Data.php">Data Mahasiswa</a></li>
+			        <li><a class="dropdown-item" href="src/Datadosen.php">Data Dosen</a></li>
+            </ul>
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="offcanvasNavbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -35,7 +41,7 @@
             </a>
             <ul class="dropdown-menu" aria-labelledby="offcanvasNavbarDropdown">
               <li><a class="dropdown-item" href="src/create.php">Input Data Mahasiswa</a></li>
-			        <li><a class="dropdown-item" href="#">Input Data Dosen</a></li>
+			        <li><a class="dropdown-item" href="src/createdosen.php">Input Data Dosen</a></li>
             </ul>
           </li>
         </ul>
@@ -44,6 +50,7 @@
   </div>
  </nav>
 
+    
     <!-- Slider -->
 <div class="slider" style="object-fit: cover;">
     <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
@@ -82,6 +89,19 @@
     </button>
     </div>
   </div>
+
+  <!-- Navigator -->
+  <div class="container">
+    <header class="d-flex justify-content-center py-3 mt-4">
+      <ul class="nav nav-pills">
+        <li class="nav-item"><a href="#" class="nav-link active" aria-current="page">Beranda</a></li>
+        <li class="nav-item"><a href="#" class="nav-link">Kontak</a></li>
+        <li class="nav-item"><a href="#" class="nav-link">Kegiatan</a></li>
+        <li class="nav-item"><a href="#" class="nav-link">Kepengurusan</a></li>
+      </ul>
+    </header>
+  </div>
+
 
     <!-- Content1 -->
   <div class="container" style="margin-top: 80px; margin-bottom: 20px;">

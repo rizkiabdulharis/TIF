@@ -71,7 +71,7 @@ include("func.php");
 			<hr />
 			
 			<?php
-			$nim = $_GET['nid'];
+			$nid = $_GET['nid'];
 			
 			$sql = mysqli_query($koneksi, "SELECT * FROM dosen_informatika WHERE nid='$nid'");
 			if(mysqli_num_rows($sql) == 0){
@@ -137,7 +137,7 @@ include("func.php");
 				</tr>
 			</table>
 			
-			<a href="index.php" class="btn btn-warning"><span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span></a>
+			<a href="readdosen.php" class="btn btn-warning"><span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span></a>
 			<a href="editdosen.php?nid=<?php echo $row['nid']; ?>" class="btn btn-primary"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span> Edit Data</a>
 		</div>
 	</div>

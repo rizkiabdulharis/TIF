@@ -134,7 +134,7 @@ include("koneksi.php");
 
 								<a href="editdosen.php?nid='.$row['nid'].'" title="Edit Data"><img src="../node_modules/bootstrap-icons/icons/pencil.svg" alt=""></a>
 
-								<a href="index.php?aksi=delete&nid='.$row['nid'].'" title="Hapus Data" onclick="return confirm(\'Yakin?\')"><img src="../node_modules/bootstrap-icons/icons/trash.svg" alt=""></a>
+								<a href="datadosen.php?aksi=delete&nid='.$row['nid'].'" title="Hapus Data" onclick="return confirm(\'Yakin?\')"><img src="../node_modules/bootstrap-icons/icons/trash.svg" alt=""></a>
 							</td>
 						</tr>
 						';

@@ -73,7 +73,8 @@ include("func.php");
 			
 			<?php
 			
-			$sql = mysqli_query($koneksi, " SELECT * FROM dosen_informatika WHERE id ='$id'" );
+			$nid = $_GET['nid'];
+			$sql = mysqli_query($koneksi, " SELECT * FROM dosen_informatika WHERE nid ='$nid'" );
 			if(mysqli_num_rows($sql) == 0){
 				header("Location: index.php");
 			}else{

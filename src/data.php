@@ -71,13 +71,13 @@ include("koneksi.php");
 			<?php
 			if(isset($_GET['aksi']) == 'delete'){
 				$nim = $_GET['nim'];
-					$delete = mysqli_query($koneksi, "DELETE FROM mahasiswa WHERE nim ='$nim'");
+					$delete = mysqli_query($koneksi, "DELETE FROM mahasiswa_informatika WHERE nim ='$nim'");
 					if($delete){
 						echo '<div class="alert alert-danger">Data berhasil dihapus.</div>';
 					}else{
 						echo '<div class="alert alert-info">Data gagal dihapus.</div>';
 					}
-				// }
+				
 			}
 			?>
 			
@@ -134,7 +134,7 @@ include("koneksi.php");
 						      <td>
 								<a href="read.php?nim='.$row['nim'].'" title="Lihat Detail"><img src="../node_modules/bootstrap-icons/icons/list-task.svg" alt=""></a>
 								<a href="edit.php?nim='.$row['nim'].'" title="Edit Data"><img src="../node_modules/bootstrap-icons/icons/pencil.svg" alt=""></a>
-								<a href="index.php?aksi=delete&nim='.$row['nim'].'" title="Hapus Data" onclick="return confirm(\'Yakin?\')"><img src="../node_modules/bootstrap-icons/icons/trash.svg" alt=""></a>
+								<a href="data.php?aksi=delete&nim='.$row['nim'].'" title="Hapus Data" onclick="return confirm(\'Yakin?\')"><img src="../node_modules/bootstrap-icons/icons/trash.svg" alt=""></a>
 							 </td>	
 						</tr>
 						';

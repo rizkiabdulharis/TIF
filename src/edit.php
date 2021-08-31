@@ -8,7 +8,7 @@ include("func.php");
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>User Manajemen</title>
+	<title>User Mahasiswa</title>
 
 	<!-- Bootstrap -->
 	<link href="../css/bootstrap.min.css" rel="stylesheet">
@@ -73,9 +73,10 @@ include("func.php");
 			
 			<?php
 			
+			$nim = $_GET['nim'];
 			$sql = mysqli_query($koneksi, " SELECT * FROM mahasiswa_informatika WHERE nim ='$nim'" );
 			if(mysqli_num_rows($sql) == 0){
-				header("Location: edit.php");
+				header("Location: index.php");
 			}else{
 				$row = mysqli_fetch_assoc($sql);
 			}

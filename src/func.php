@@ -13,7 +13,7 @@ function tanggal($date){
 	$bulan = substr($date, 5, 2);
 	$tgl   = substr($date, 8, 2);
  
-	$result = $tgl . " " . $BulanIndo[(int)$bulan] . " ". $tahun;		
+	$result = $tgl . " " . $BulanIndo[(int)$BulanIndo] . " ". $tahun;		
 	return($result);
 }
 ?>

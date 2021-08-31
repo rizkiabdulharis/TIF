@@ -56,7 +56,6 @@ include("func.php");
                Input Data
             </a>
             <ul class="dropdown-menu" aria-labelledby="offcanvasNavbarDropdown">
-					<li><a class="dropdown-item" href="create.php">Input Data Mahasiswa</a></li>
 			        <li><a class="dropdown-item" href="createdosen.php">Input Data Dosen</a></li>
             </ul>
           </li>

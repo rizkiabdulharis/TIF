@@ -7,7 +7,7 @@ include("koneksi.php");
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>User Manajemen</title>
+	<title>Data mahasiswa</title>
 
 	<!-- Bootstrap -->
 	<link href="../css/bootstrap.min.css" rel="stylesheet">
@@ -46,7 +46,6 @@ include("koneksi.php");
                Data
             </a>
             <ul class="dropdown-menu" aria-labelledby="offcanvasNavbarDropdown">
-              <li><a class="dropdown-item" href="Data.php">Data Mahasiswa</a></li>
 			        <li><a class="dropdown-item" href="Datadosen.php">Data Dosen</a></li>
             </ul>
           </li>
@@ -56,7 +55,7 @@ include("koneksi.php");
             </a>
             <ul class="dropdown-menu" aria-labelledby="offcanvasNavbarDropdown">
 			  		<li><a class="dropdown-item" href="create.php">Input Data Mahasiswa</a></li>
-			        <li><a class="dropdown-item" href="#">Input Data Dosen</a></li>
+			        <li><a class="dropdown-item" href="createdosen.php">Input Data Dosen</a></li>
             </ul>
           </li>
         </ul>
@@ -66,7 +65,7 @@ include("koneksi.php");
  </nav>
 	<div class="container">
 		<div class="content">
-			<h2>Data User</h2>
+			<h2>Data mahasiswa</h2>
 			<hr />
 			
 			<?php
@@ -130,12 +129,13 @@ include("koneksi.php");
 							}else{
 								echo '<span class="label label-warning">Tidak Aktif</span>';
 							}
-						echo'<td>
+						echo '
+						      </td>
+						      <td>
 								<a href="read.php?nim='.$row['nim'].'" title="Lihat Detail"><img src="../node_modules/bootstrap-icons/icons/list-task.svg" alt=""></a>
-
 								<a href="edit.php?nim='.$row['nim'].'" title="Edit Data"><img src="../node_modules/bootstrap-icons/icons/pencil.svg" alt=""></a>
-
 								<a href="index.php?aksi=delete&nim='.$row['nim'].'" title="Hapus Data" onclick="return confirm(\'Yakin?\')"><img src="../node_modules/bootstrap-icons/icons/trash.svg" alt=""></a>
+							 </td>	
 						</tr>
 						';
 						$no++;

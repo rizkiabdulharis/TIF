@@ -1,5 +1,6 @@
 <?php
 include("koneksi.php");
+include("func.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -25,7 +26,7 @@ include("koneksi.php");
 </head>
 <body>
 		<!-- Nav -->
-<nav class="navbar navbar-light bg-secondary fixed-top">
+<nav class="navbar navbar-light bg-secondary py-3 fixed-top">
   <div class="container-fluid">
     <a class="navbar-brand" href="https://instagram.com/himatifuninus?utm_medium=copy_link">Teknik Informatika</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
@@ -47,6 +48,7 @@ include("koneksi.php");
             </a>
             <ul class="dropdown-menu" aria-labelledby="offcanvasNavbarDropdown">
               		<li><a class="dropdown-item" href="Data.php">Data Mahasiswa</a></li>
+			        <li><a class="dropdown-item" href="Datadosen.php">Data Dosen</a></li>
             </ul>
           </li>
           <li class="nav-item dropdown">
@@ -54,7 +56,7 @@ include("koneksi.php");
                Input Data
             </a>
             <ul class="dropdown-menu" aria-labelledby="offcanvasNavbarDropdown">
-			        <li><a class="dropdown-item" href="create.php">Input Data Mahasiswa</a></li>
+					<li><a class="dropdown-item" href="create.php">Input Data Mahasiswa</a></li>
 			        <li><a class="dropdown-item" href="createdosen.php">Input Data Dosen</a></li>
             </ul>
           </li>
@@ -69,81 +71,74 @@ include("koneksi.php");
 			<hr />
 			
 			<?php
+			$nim = $_GET['nid'];
+			
+			$sql = mysqli_query($koneksi, "SELECT * FROM dosen_informatika WHERE nid='$nid'");
+			if(mysqli_num_rows($sql) == 0){
+				header("Location: index.php");
+			}else{
+				$row = mysqli_fetch_assoc($sql);
+			}
+			
 			if(isset($_GET['aksi']) == 'delete'){
-				$nid = $_GET['nid'];
-					$delete = mysqli_query($koneksi, "DELETE FROM dosen_informatika WHERE nid ='$nid'");
-					if($delete){
-						echo '<div class="alert alert-danger">Data berhasil dihapus.</div>';
-					}else{
-						echo '<div class="alert alert-info">Data gagal dihapus.</div>';
-					}
-				// }
+				$delete = mysqli_query($koneksi, "DELETE FROM dosen_infromatika WHERE nid='$nid'");
+				if($delete){
+					echo '<div class="alert alert-danger">Data berhasil dihapus.</div>';
+				}else{
+					echo '<div class="alert alert-info">Data gagal dihapus.</div>';
+				}
 			}
 			?>
-			
-			<form class="form-inline" method="get">
-				<div class="form-group">
-					<select name="urut" class="form-control" onchange="form.submit()">
-						<option value="0">Filter</option>
-						<?php $urut = (isset($_GET['urut']) ? strtolower($_GET['urut']) : NULL);  ?>
-						<option value="1" <?php if($urut == '1'){ echo 'selected'; } ?>>dosen Aktif</option>
-						<option value="2" <?php if($urut == '2'){ echo 'selected'; } ?>>dosen Tidak Aktif</option>
-					</select>
-				</div>
-			</form>
-			<br />
-			<div class="table-responsive">
-			<table class="table table-striped table-hover">
+			<!-- <img class="img-responsive img-circle center-block" src="avatar/<?php echo $row['foto']; ?>" width="150"><br /> -->
+			<table class="table table-striped">
 				<tr>
-					<th>NO.</th>
-					<th>NID</th>
-					<th>NAMA LENGKAP</th>
-					<th>EMAIL</th>
-					<th>JENIS KELAMIN</th>
-					<th>MATA KULIAH</th>
-					<th>STATUS</th>
-					<th>SETTING</th>
+					<th width="20%">NID</th>
+					<td><?php echo $row['nid']; ?></td>
 				</tr>
-				<?php
-				if($urut){
-					$sql = mysqli_query($koneksi, "SELECT * FROM dosen_informatika WHERE status='$urut' ORDER BY nid ASC");
-				}else{
-					$sql = mysqli_query($koneksi, "SELECT * FROM dosen_informatika ORDER BY nid ASC");
-				}
-				if(mysqli_num_rows($sql) == 0){
-					echo '<tr><td colspan="8">Tidak ada data.</td></tr>';
-				}else{
-					$no = 1;
-					while($row = mysqli_fetch_assoc($sql)){
-						echo '
-						<tr>
-							<td>'.$no.'</td>
-							<td>'.$row['nid'].'</td>
-							<td>'.$row['nama'].'</td>
-							<td>'.$row['email'].'</td>
-							<td>'.$row['jenis_kelamin'].'</td>
-							<td>'.$row['mata_kuliah'].'</td>
-							<td>';
-							if($row['status'] == 1){
-								echo '<span class="label label-success">Aktif</span>';
-							}else{
-								echo '<span class="label label-warning">Tidak Aktif</span>';
-							}
-						echo'<td>
-								<a href="readdosen.php?nid='.$row['nid'].'" title="Lihat Detail"><img src="../node_modules/bootstrap-icons/icons/list-task.svg" alt=""></a>
-
-								<a href="editdosen.php?nid='.$row['nid'].'" title="Edit Data"><img src="../node_modules/bootstrap-icons/icons/pencil.svg" alt=""></a>
-
-								<a href="index.php?aksi=delete&nid='.$row['nid'].'" title="Hapus Data" onclick="return confirm(\'Yakin?\')"><img src="../node_modules/bootstrap-icons/icons/trash.svg" alt=""></a>
-							</td>
-						</tr>
-						';
-						$no++;
-					}
-				}
-				?>
+				<tr>
+					<th>NAMA LENGKAP</th>
+					<td><?php echo $row['nama']; ?></td>
+				</tr>
+				<tr>
+					<th>TEMPAT & TANGGAL LAHIR</th>
+					<td><?php echo $row['tempat_lahir'].', '.tanggal($row['tanggal_lahir']); ?></td>
+				</tr>
+				<tr>
+					<th>EMAIL</th>
+					<td><?php echo $row['email']; ?></td>
+				</tr>
+				<tr>
+					<th>JENIS KELAMIN</th>
+					<td><?php echo $row['jenis_kelamin']; ?></td>
+				</tr>
+				<tr>
+					<th>AGAMA</th>
+					<td><?php echo $row['agama']; ?></td>
+				</tr>
+				<tr>
+					<th>MATA KULIAH</th>
+					<td><?php echo $row['mata_kuliah']; ?></td>
+				</tr>
+				<tr>
+					<th>PENDIDIKAN TERAKHIR</th>
+					<td><?php echo $row['pendidikan_terakhir']; ?></td>
+				</tr>
+				<tr>
+					<th>TAHUN MASUK</th>
+					<td><?php echo $row['tahun_masuk']; ?></td>
+				</tr>
+				<tr>
+					<th>ALAMAT</th>
+					<td><?php echo $row['alamat']; ?></td>
+				</tr>
+				<tr>
+					<th>STATUS</th>
+					<td><?php if($row['status'] == 1){ echo 'AKTIF'; }else{ echo 'TIDAK AKTIF'; } ?></td>
+				</tr>
 			</table>
-			</div>
+			
+			<a href="index.php" class="btn btn-warning"><span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span></a>
+			<a href="editdosen.php?nid=<?php echo $row['nid']; ?>" class="btn btn-primary"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span> Edit Data</a>
 		</div>
 	</div>
 

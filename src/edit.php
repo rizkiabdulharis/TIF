@@ -43,8 +43,14 @@ include("func.php");
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="../index.php">Home</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="data.php">Data</a>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="offcanvasNavbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+               Data
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="offcanvasNavbarDropdown">
+              		<li><a class="dropdown-item" href="Data.php">Data Mahasiswa</a></li>
+			        <li><a class="dropdown-item" href="Datadosen.php">Data Dosen</a></li>
+            </ul>
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="offcanvasNavbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -52,7 +58,7 @@ include("func.php");
             </a>
             <ul class="dropdown-menu" aria-labelledby="offcanvasNavbarDropdown">
 					<li><a class="dropdown-item" href="create.php">Input Data Mahasiswa</a></li>
-			        <li><a class="dropdown-item" href="#">Input Data Dosen</a></li>
+			        <li><a class="dropdown-item" href="createdatabase.php">Input Data Dosen</a></li>
             </ul>
           </li>
         </ul>
@@ -67,26 +73,26 @@ include("func.php");
 			
 			<?php
 			
-			$sql = mysqli_query($koneksi, " SELECT * FROM mahasiswa_informatika WHERE id ='$id'" );
+			$sql = mysqli_query($koneksi, " SELECT * FROM mahasiswa_informatika WHERE nim ='$nim'" );
 			if(mysqli_num_rows($sql) == 0){
-				header("Location: index.php");
+				header("Location: edit.php");
 			}else{
 				$row = mysqli_fetch_assoc($sql);
 			}
 			if(isset($_POST['save'])){
 				$nama		= aman($_POST['nama']);
-				$tmp		= aman($_POST['tmp']);
-				$tgl		= aman($_POST['tgl']);
+				$tempat_lahir		= aman($_POST['tempat_lahir']);
+				$tanggal_lahir		= aman($_POST['tanggal_lahir']);
 				$email		= aman($_POST['email']);
-				$jk			= aman($_POST['jk']);
+				$jenis_kelamin		= aman($_POST['jenis_kelamin']);
 				$agama		= aman($_POST['agama']);
 				$jurusan	= aman($_POST['jurusan']);
-				$smt		= aman($_POST['semester']);
-				$thn_masuk	= aman($_POST['tahun_masuk']);
+				$semester		= aman($_POST['semester']);
+				$tahun_masuk	= aman($_POST['tahun_masuk']);
 				$alamat		= aman($_POST['alamat']);
 				$status		= aman($_POST['status']);
 				
-				$update = mysqli_query($koneksi, "UPDATE mahasiswa_informatika SET nama ='$nama', tempat_lahir='$tmp', tanggal_lahir='$tgl', email='$email', jenis_kelamin='$jk', agama='$agama', jurusan='$jurusan', semester='$smt', tahun_masuk='$thn_masuk', alamat='$alamat', status='$status' WHERE nim='$nim'") or die(mysqli_error());
+				$update = mysqli_query($koneksi, "UPDATE mahasiswa_informatika SET nama ='$nama', tempat_lahir='$tempat_lahir', tanggal_lahir='$tanggal_lahir', email='$email', jenis_kelamin='$jenis_kelamin', agama='$agama', jurusan='$jurusan', semester='$semester', tahun_masuk='$tahun_masuk', alamat='$alamat', status='$status' WHERE nim='$nim'") or die(mysqli_error());
 				if($update){
 					header("Location: edit.php?nim=".$nim."&pesan=sukses");
 				}else{
@@ -102,7 +108,7 @@ include("func.php");
 				<div class="form-group">
 					<label class="col-sm-3 control-label">NIM</label>
 					<div class="col-sm-2">
-						<input type="text" name="nim" class="form-control" value="<?php echo $row['nim']; ?>" placeholder="NIM" disabled>
+						<input type="text" name="nim" class="form-control" value="<?php echo $row['nim']; ?>" placeholder="nim" disabled>
 					</div>
 				</div>
 				<div class="form-group">
@@ -114,11 +120,11 @@ include("func.php");
 				<div class="form-group">
 					<label class="col-sm-3 control-label">TEMPAT & TANGGAL LAHIR</label>
 					<div class="col-sm-3">
-						<input type="text" name="tmp" class="form-control" value="<?php echo $row['tempat_lahir']; ?>" placeholder="TEMPAT LAHIR" required>
+						<input type="text" name="tempat_lahir" class="form-control" value="<?php echo $row['tempat_lahir']; ?>" placeholder="TEMPAT LAHIR" required>
 					</div>
 					<div class="col-sm-2">
 						<div class="input-group date" data-provide="datepicker">
-							<input type="text" name="tgl" class="form-control" value="<?php echo $row['tanggal_lahir']; ?>" placeholder="0000-00-00">
+							<input type="text" name="tanggal_lahir" class="form-control" value="<?php echo $row['tanggal_lahir']; ?>" placeholder="0000-00-00">
 							<div class="input-group-addon">
 								<span class="glyphicon glyphicon-calendar"></span>
 							</div>
@@ -134,7 +140,7 @@ include("func.php");
 				<div class="form-group">
 					<label class="col-sm-3 control-label">JENIS KELAMIN</label>
 					<div class="col-sm-2">
-						<select name="jk" class="form-control" required>
+						<select name="jenis_kelamin" class="form-control" required>
 							<option value="">JENIS KELAMIN</option>
 							<option value="Laki-Laki" <?php if($row['jenis_kelamin'] == 'Laki-Laki'){ echo 'selected'; } ?>>LAKI-LAKI</option>
 							<option value="Perempuan" <?php if($row['jenis_kelamin'] == 'Perempuan'){ echo 'selected'; } ?>>PEREMPUAN</option>

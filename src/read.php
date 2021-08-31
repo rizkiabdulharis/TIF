@@ -42,8 +42,14 @@ include("func.php");
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="../index.php">Home</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="read.php">Data</a>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="offcanvasNavbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+               Data
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="offcanvasNavbarDropdown">
+              		<li><a class="dropdown-item" href="Data.php">Data Mahasiswa</a></li>
+			        <li><a class="dropdown-item" href="Datadosen.php">Data Dosen</a></li>
+            </ul>
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="offcanvasNavbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -51,7 +57,7 @@ include("func.php");
             </a>
             <ul class="dropdown-menu" aria-labelledby="offcanvasNavbarDropdown">
 					<li><a class="dropdown-item" href="create.php">Input Data Mahasiswa</a></li>
-			        <li><a class="dropdown-item" href="#">Input Data Dosen</a></li>
+			        <li><a class="dropdown-item" href="createdosen.php">Input Data Dosen</a></li>
             </ul>
           </li>
         </ul>
@@ -75,7 +81,7 @@ include("func.php");
 			}
 			
 			if(isset($_GET['aksi']) == 'delete'){
-				$delete = mysqli_query($koneksi, "DELETE FROM mahasiswa WHERE nim='$nim'");
+				$delete = mysqli_query($koneksi, "DELETE FROM mahasiswa_informatika WHERE nim='$nim'");
 				if($delete){
 					echo '<div class="alert alert-danger">Data berhasil dihapus.</div>';
 				}else{

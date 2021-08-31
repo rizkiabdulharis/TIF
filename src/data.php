@@ -25,7 +25,7 @@ include("koneksi.php");
 </head>
 <body>
 		<!-- Nav -->
-<nav class="navbar navbar-light bg-secondary fixed-top">
+<nav class="navbar navbar-light bg-light fixed-top">
   <div class="container-fluid">
     <a class="navbar-brand" href="https://instagram.com/himatifuninus?utm_medium=copy_link">Teknik Informatika</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
@@ -65,7 +65,7 @@ include("koneksi.php");
  </nav>
 	<div class="container">
 		<div class="content">
-			<h2>Data mahasiswa</h2>
+			<h2>Data Mahasiswa</h2>
 			<hr />
 			
 			<?php
